@@ -125,10 +125,22 @@ document.querySelector('.b-7').onclick = f7;
 
 // Task 8.
 // Дан select s-8, который содержит 3 значения: 1, 2, 3. Дана кнопка b-8. При ее  нажатии срабатывает функция f8. Функция должна получить выбранное в select число, потом с помощью switch case сравнить его поочередно с 1, 2, 3. И если число выбрано - 1, то вывести в .out-8 строку one, если 2 - two, если 3 - three. Напоминаю - это программирование. Как указано в задании - так и выводим. Т.е. Three с большой буквы - ошибка!!!
-
+let s8 = document.querySelector('.s-8');
 function f8(){
+   let p = +s8.value;
+   switch (p){
+      case 1:
+         document.querySelector('.out-8').innerHTML = 'one';
+         break;
+      case 2:
+         document.querySelector('.out-8').innerHTML = 'two';
+         break;
+      case 3:
+         document.querySelector('.out-8').innerHTML = 'three';
+   }
 
 }
+
 
 document.querySelector('.b-8').onclick = f8;
 
@@ -139,37 +151,67 @@ document.querySelector('.b-8').onclick = f8;
 //  если от 44(включительно) до 64 (всключительно) - то 3.
 //  В противном случае, вывести 0.
 
+let i9 = document.querySelector(".i-9");
+ 
 function f9(){
+   let y = +i9.value;
 
-}
+     if(y >= 1 && y <=32){
+        document.querySelector(".out-9").innerHTML= 1;
+     }
+  else if (y >=33 && y <=43){
+   document.querySelector(".out-9").innerHTML= 2;
+  }
+  else if (y >=44 && y <=64){
+   document.querySelector(".out-9").innerHTML= 3;
+  }
+  else if (y >=65){
+   document.querySelector(".out-9").innerHTML= 0;
+  }
+  i9.value = " ";
+
+   }
+
 
 document.querySelector('.b-9').onclick = f9;
 
 // Task 10
 // Дан select .s-100. По нажатию кнопки, выведите value выбранного option в .out-10.
-let input10 = document.querySelector(".s-100");
-let out10 = document.querySelector(".out-10");
 
-function f10() {
-  if (input10 == "six") {
-    out10.textContent += input10.value;
-  } else if (input10 == "seven") {
-    out10.textContent += input10.value;
-  } else if (input10 == "eleven") {
-    out10.textContent += input10.value;
-  } else if (input10 == "nine") {
-    out10.textContent += input10.value;
-  }
-}
+//a)
 
-document.querySelector('.b-10').onclick = f10;
+// let s100 = document.querySelector('.s-100');
+// function f10(){
+//    let p = +s100.value;
+//    switch (p){
+//       case "six":
+//          document.querySelector('.out-10').innerHTML = 6;
+//          break;
+//       case "seven":
+//          document.querySelector('.out-10').innerHTML = 7;
+//          break;
+//       case "eleven":
+//          document.querySelector('.out-10').innerHTML = 11;
+//       case "nine":
+//          document.querySelector('.out-10').innerHTML = 9;   
+//    }
 
+// }
+// document.querySelector('.b-10').onclick = f10;
+
+//b)
+
+let s100 = document.querySelector('.s-100');
+let out10 = document.querySelector('.out-10');
+document.querySelector('.b-10').onclick = () => out10.innerText = s100.value;
 
 // Task 11
 // Дан select .s-110. По изменению состояния select (событие onchange) выведите value выбранного option в .out-11.
 
+let s110 = document.querySelector('.s-110');
+let out11 = document.querySelector('.out-11');
 function f11(){
-
+out11.innerText = s110.value
 }
 
 document.querySelector('.s-110').onchange = f11;
@@ -180,8 +222,8 @@ document.querySelector('.s-110').onchange = f11;
 let i120 = document.querySelector('.i-120');
 
 function f12(){
-   // let v = i120.value;
-   // document.querySelector('.out-12').innerHTML = (typeof v);
+    let v = i120.value;
+    document.querySelector('.out-12').innerHTML = (typeof v);
 
 }
 
@@ -189,9 +231,10 @@ document.querySelector('.b-12').onclick = f12;
 
 // Task 13
 // Дан input i-130. В отличие от предыдущего задания - input type number. По нажатию кнопки получите значение из input  в переменную, а затем выведите в out-13 typeof полученной переменной. Typeof позволяет определить тип данных. Если вы правильно все сделали - то удивительно, но тип данных будет string! Подумайте почему так?
-
+let i130 = document.querySelector('.i-130');
 function f13(){
-
+   let n = +i130.value;
+   document.querySelector('.out-13').innerHTML = (typeof n);
 }
 
 document.querySelector('.b-13').onclick = f13;
@@ -200,21 +243,58 @@ document.querySelector('.b-13').onclick = f13;
 // Task 14
 // Дан input .i-141 и .i-142, type=number.  Дан select .s-143, который содержит две операции - +, -, *, / . Дана кнопка b-14, при нажатии на которую срабатывает функция f14. Функция выводит в .out-14 результат операций выбранной в 3-м select к числам введенным в первом и втором input. Например выбрано 1 13 +, нужно вывести результат операции 1+13 т.е.  14.
 
+let i141 = document.querySelector(".i-141");
+let i142 = document.querySelector(".i-142");
+let s143 = document.querySelector(".s-143");
+
 function f14(){
+ let j = +i141.value;
+ let h = +i142.value;
+ let m = s143.value;
+ 
+   switch (m){
+      case "+":
+         document.querySelector('.out-14').innerHTML = (j + h);
+         break;
+      case "-":
+         document.querySelector('.out-14').innerHTML = (j-h);
+         break;
+      case "*":
+         document.querySelector('.out-14').innerHTML = (j*h);
+         break;
+         case "/":
+            document.querySelector('.out-14').innerHTML = (j/h).toFixed(2);
+   } 
+                                                   
+   i141.value = " ";
+   i142.value = " ";
 
 }
-
 document.querySelector('.b-14').onclick = f14;
 
 
 // Task     15
 // Дан select .s-151 и .s-152, каждый из которых содержит 1 и 0.  Дан select .s-153, который содержит две операции - && и || . Дана кнопка .b-15, при нажатии на которую срабатывает функция f15. Функция выводит в .out-15 результат логических операций выбранных в 3 select к числам выбранным в первом и втором select. Например выбрано 1 1 &&, нужно вывести результат операции 1&&1 т.е. 1 или 0.
+let s151 = document.querySelector(".s-151");
+let s152 = document.querySelector(".s-152");
+let s153 = document.querySelector(".s-153");
 
 function f15(){
+   let j = +s151.value;
+   let h = +s152.value;
+   let m = s153.value;
 
+switch (m){
+   case "&&":
+      document.querySelector('.out-15').innerHTML = (j +'&&'+ h );
+      break;
+   case "||":
+      document.querySelector('.out-15').innerHTML = (j + '||'+ h);
 }
 
-document.querySelector('.b-15').onclick = f15;
+}
+ document.querySelector('.b-15').onclick = f15;
+
 
 
 
